@@ -9,9 +9,7 @@ echo ${JMETER_DIR}
 today=`date +%Y-%m-%d`
 if [ "$(ls -A $REPORTS_DIR)" ];
 then
-   rm -rf repoprts/*
-   echo "Reports Folder Are Not Empty !"
-   sh ${JMETER_DIR}/jmeter.sh -n -t jmx/$1 -j logs/N-${today}-jMeter-logName.log -l  logs/N-${today}-jmeter-test-10000Threads-300TPS.jtl -e -o reports > /dev/null 2>&1
-else
-   sh ${JMETER_DIR}/jmeter.sh -n -t jmx/$1 -j logs/N-${today}-jMeter-logName.log -l  logs/N-${today}-jmeter-test-10000Threads-300TPS.jtl -e -o reports > /dev/null 2>&1
+   rm -rf reports/*
+   echo "Reports Folder Are Not Empty ! Deleting Reports Directory !!!"
 fi
+sh ${JMETER_DIR}/jmeter.sh -n -t jmx/$1 -j logs/N-${today}-jMeter-logName.log -l  logs/N-${today}-jmeter-test-nThreads-nTPS.jtl -e -o reports > /dev/null 2>&1
