@@ -543,33 +543,26 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="IdeaSubmission: Create Idea " enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="Language" elementType="HTTPArgument">
+              <elementProp name="idea-campaign-value" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">-1</stringProp>
+                <stringProp name="Argument.value">website</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">Language</stringProp>
+                <stringProp name="Argument.name">idea-campaign-value</stringProp>
               </elementProp>
-              <elementProp name="Campaign" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">40</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">Campaign</stringProp>
-              </elementProp>
-              <elementProp name="Title" elementType="HTTPArgument">
+              <elementProp name="idea-title-input" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">XYZ123</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">Title</stringProp>
+                <stringProp name="Argument.name">idea-title-input</stringProp>
               </elementProp>
-              <elementProp name="Description" elementType="HTTPArgument">
+              <elementProp name="idea-desc-value" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">XYZ Description</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">Description</stringProp>
+                <stringProp name="Argument.name">idea-desc-value</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>

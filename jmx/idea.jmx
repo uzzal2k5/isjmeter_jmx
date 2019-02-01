@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="ideascale" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="idea" enabled="true">
       <stringProp name="TestPlan.comments">IdeaScale Performance Test With JMeter</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
@@ -16,6 +16,21 @@
         <stringProp name="TestPlan.comments">Community Login Details</stringProp>
         <stringProp name="ConfigTestElement.username">${EMAIL_ID}@${EMAIL_ID}</stringProp>
         <stringProp name="ConfigTestElement.password">${EMAIL_ID}@${EMAIL_ID}</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">uzzal.ideascale.com</stringProp>
+        <stringProp name="HTTPSampler.port">${HTTPS_PORT}</stringProp>
+        <stringProp name="HTTPSampler.protocol">${PROTO}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path">/a/community/login</stringProp>
+        <stringProp name="TestPlan.comments">Request Default Login Page</stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
       </ConfigTestElement>
       <hashTree/>
       <ConstantThroughputTimer guiclass="TestBeanGUI" testclass="ConstantThroughputTimer" testname="Constant Throughput Timer" enabled="true">
@@ -137,78 +152,123 @@
             <stringProp name="Argument.desc">Unique Users ID</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="FP" elementType="Argument">
+            <stringProp name="Argument.name">FP</stringProp>
+            <stringProp name="Argument.value">${fp}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
         <stringProp name="TestPlan.comments">User Defined Variable Declaration</stringProp>
       </Arguments>
       <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+        <boolProp name="clearEachIteration">false</boolProp>
+        <boolProp name="useExpires">true</boolProp>
+      </CacheManager>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies">
+          <elementProp name="ISSESSIONID" elementType="Cookie" testname="ISSESSIONID">
+            <stringProp name="Cookie.value">8dc18238-ed68-4e48-9027-f5b266296b56</stringProp>
+            <stringProp name="Cookie.domain"></stringProp>
+            <stringProp name="Cookie.path"></stringProp>
+            <boolProp name="Cookie.secure">false</boolProp>
+            <longProp name="Cookie.expires">0</longProp>
+            <boolProp name="Cookie.path_specified">true</boolProp>
+            <boolProp name="Cookie.domain_specified">true</boolProp>
+          </elementProp>
+          <elementProp name="IdeaScale" elementType="Cookie" testname="IdeaScale">
+            <stringProp name="Cookie.value">R_TYkIJ8snqRbUfm4x2FPcRkuUWEjh0qhoIojgQMZINKPX-f2sNu-wQJxq8ddpTV70RiUIe-YsRiGYndVrdLHQxEb2rCmajiTBHM56qaU85mpbqn1kdTdUJH_HSEiU6t9TNtr9ZpQCpPDzNJehodm1PBx5DyJBLtfCDOwX2kca337f00ZmK9f00Q2zJPB82dPoVVJ7zaH253QIMQ3dB-wp9B3ZqVd6DGbwi3pwCU-TT-0fhm9pHvfm6iUs74lxmqIQ5yxV5KGIwobm9wy4KedzfxbpqQdGkarWHulHQS9V_vYOjXfcejrhQZGvOt3jmSjxOg1o2bvXiDj2vFUA4NCSzJoEdKNJR6vDw-V2ip6LLePwGAcj2Qks9BunZJu-pglrstuunIbp3OrI8qnt3ULEkVFUTpnjklc1cJAWeeryhjp-3nJbPK1PphOZwcg9J9gt1kvKrdNvuQPkLp6pJh1ajyGar4No5cSZ9RN9bH2hbRpBgqHwu5QO-jUo8AnIYU4a6mL5x0jVKRkoqAvnNdFNIpOpn-r3B-bvfIHLaNjzSKoVh19XOuhZ-90Yhy9Pb2Gj-s2DXEH0yltXcg7Mrc6XDJVLG37B_uNCw-cUqm-jamgo_tqKIp0k6_tRCXQJKsfcJFbtliHVuGf3l9H8P06vYomwvMeL5ydFu4laMuNNXibBAINwslZeZzL0Hi2m_kboIo9qXYQ5mDddDxZd8mlEcYCUMZKeg3uR7RfV_aib45mKWk0wS4puLzYFcUTBWv-FQb4OOxmWdyYAiI3x-zrw</stringProp>
+            <stringProp name="Cookie.domain"></stringProp>
+            <stringProp name="Cookie.path"></stringProp>
+            <boolProp name="Cookie.secure">false</boolProp>
+            <longProp name="Cookie.expires">0</longProp>
+            <boolProp name="Cookie.path_specified">true</boolProp>
+            <boolProp name="Cookie.domain_specified">true</boolProp>
+          </elementProp>
+        </collectionProp>
+        <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+      </CookieManager>
+      <hashTree/>
       <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
         <collectionProp name="HeaderManager.headers">
-          <elementProp name="Accept" elementType="Header">
-            <stringProp name="Header.name">Accept</stringProp>
-            <stringProp name="Header.value">*/*</stringProp>
-          </elementProp>
-          <elementProp name="Csrf-Token" elementType="Header">
-            <stringProp name="Header.name">Csrf-Token</stringProp>
-            <stringProp name="Header.value">${CSRF_TOKEN}</stringProp>
-          </elementProp>
-          <elementProp name="Content-Type" elementType="Header">
+          <elementProp name="" elementType="Header">
             <stringProp name="Header.name">Content-Type</stringProp>
             <stringProp name="Header.value">application/x-www-form-urlencoded; charset=UTF-8</stringProp>
           </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">accept</stringProp>
+            <stringProp name="Header.value">*/*</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">accept-language</stringProp>
+            <stringProp name="Header.value">en-GB,en-US;q=0.9,en;q=0.8</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">x-requested-with</stringProp>
+            <stringProp name="Header.value">XMLHttpRequest</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">pragma</stringProp>
+            <stringProp name="Header.value">no-cache</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">csrfToken</stringProp>
+            <stringProp name="Header.value">${csrf_token}</stringProp>
+          </elementProp>
         </collectionProp>
-        <stringProp name="TestPlan.comments">Header Manager</stringProp>
       </HeaderManager>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
-        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-          <collectionProp name="Arguments.arguments"/>
-        </elementProp>
-        <stringProp name="HTTPSampler.domain">${BASE_URL_DEV}</stringProp>
-        <stringProp name="HTTPSampler.port">${HTTPS_PORT}</stringProp>
-        <stringProp name="HTTPSampler.protocol">${PROTO}</stringProp>
-        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-        <stringProp name="HTTPSampler.path">${GLOBAL_LOGIN}</stringProp>
-        <stringProp name="TestPlan.comments">Request Default Login Page</stringProp>
-        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
-        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-        <stringProp name="HTTPSampler.response_timeout"></stringProp>
-      </ConfigTestElement>
+      <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Get The csRF Token" enabled="true">
+        <stringProp name="RegexExtractor.useHeaders">as_document</stringProp>
+        <stringProp name="RegexExtractor.refname">csrf_token</stringProp>
+        <stringProp name="RegexExtractor.regex">csrfToken = &quot;(.*?)&quot;</stringProp>
+        <stringProp name="RegexExtractor.template">$1$</stringProp>
+        <stringProp name="RegexExtractor.default"></stringProp>
+        <stringProp name="RegexExtractor.match_number">1</stringProp>
+        <stringProp name="Scope.variable">csrf_token</stringProp>
+      </RegexExtractor>
       <hashTree/>
-      <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-        <collectionProp name="Asserion.test_strings">
-          <stringProp name="49586">200</stringProp>
-        </collectionProp>
-        <stringProp name="TestPlan.comments">Response Assertions : Response Code</stringProp>
-        <stringProp name="Assertion.custom_message"></stringProp>
-        <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-        <boolProp name="Assertion.assume_success">false</boolProp>
-        <intProp name="Assertion.test_type">16</intProp>
-        <stringProp name="Assertion.scope">all</stringProp>
-      </ResponseAssertion>
+      <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Browser FingerPrint" enabled="true">
+        <stringProp name="RegexExtractor.useHeaders">as_document</stringProp>
+        <stringProp name="RegexExtractor.refname">fp</stringProp>
+        <stringProp name="RegexExtractor.regex">name=&quot;browserFingerprint&quot; value=&quot;(.*?)&quot;</stringProp>
+        <stringProp name="RegexExtractor.template">$1$</stringProp>
+        <stringProp name="RegexExtractor.default"></stringProp>
+        <stringProp name="RegexExtractor.match_number">1</stringProp>
+      </RegexExtractor>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group : Idea Submission" enabled="true">
-        <stringProp name="TestPlan.comments">Thread Group To Create New Idea: Idea Submission</stringProp>
+      <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extract Login ID" enabled="true">
+        <stringProp name="RegexExtractor.useHeaders">as_document</stringProp>
+        <stringProp name="RegexExtractor.refname">id</stringProp>
+        <stringProp name="RegexExtractor.regex">name=&quot;id&quot; value=&quot;(.*?)&quot;</stringProp>
+        <stringProp name="RegexExtractor.template">$1$</stringProp>
+        <stringProp name="RegexExtractor.default"></stringProp>
+        <stringProp name="RegexExtractor.match_number">1</stringProp>
+      </RegexExtractor>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Community" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
+          <stringProp name="LoopController.loops">2</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${THRED_USERS}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${RAMP_UP_TIME}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Perform Idea Submission Page" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Community Login" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">${BASE_URL_DEV}</stringProp>
-          <stringProp name="HTTPSampler.port">${HTTPS_PORT}</stringProp>
-          <stringProp name="HTTPSampler.protocol">${PROTO}</stringProp>
+          <stringProp name="HTTPSampler.domain">uzzal.ideascale.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${IDEA_SUBMISSION}</stringProp>
+          <stringProp name="HTTPSampler.path">/a/community/login</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -218,56 +278,136 @@
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="IdeaSubmission: Submission" enabled="true">
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Verify Community Login Page" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-189731826">Log in using your IdeaScale account</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="TestPlan.comments">Log in using your IdeaScale account</stringProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login Into Community" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="Language" elementType="HTTPArgument">
+              <elementProp name="id" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">English</stringProp>
+                <stringProp name="Argument.value">${id}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">Language</stringProp>
+                <stringProp name="Argument.name">id</stringProp>
               </elementProp>
-              <elementProp name="Campaign" elementType="HTTPArgument">
+              <elementProp name="csrfToken" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">API616073 Campaign IdeaScale</stringProp>
+                <stringProp name="Argument.value">${csrf_token}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">Campaign</stringProp>
+                <stringProp name="Argument.name">csrfToken</stringProp>
               </elementProp>
-              <elementProp name="Title" elementType="HTTPArgument">
+              <elementProp name="emailAddress" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">XYZ123</stringProp>
+                <stringProp name="Argument.value">uzzal@uzzal.com</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">Title</stringProp>
+                <stringProp name="Argument.name">emailAddress</stringProp>
               </elementProp>
-              <elementProp name="Description" elementType="HTTPArgument">
+              <elementProp name="password" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">XYZ Description</stringProp>
+                <stringProp name="Argument.value">brewski01</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">Description</stringProp>
+                <stringProp name="Argument.name">password</stringProp>
+              </elementProp>
+              <elementProp name="browserFingerprint" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">55800c794ce2c94886383ed62151c4e8</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">browserFingerprint</stringProp>
+              </elementProp>
+              <elementProp name="rememberMe" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">true</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">rememberMe</stringProp>
+              </elementProp>
+              <elementProp name="target-content-type" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">json</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">target-content-type</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">data.ideascale.me</stringProp>
-          <stringProp name="HTTPSampler.port">${HTTPS_PORT}</stringProp>
+          <stringProp name="HTTPSampler.domain">uzzal.ideascale.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">${PROTO}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/a/idea</stringProp>
+          <stringProp name="HTTPSampler.path">/a/community/login</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
           <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="TestPlan.comments">HTTP Request Tpo create a New Idea: Idea Submission</stringProp>
         </HTTPSamplerProxy>
-        <hashTree/>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Verify Community Home Page " enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-172657019">Community Homepage</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
@@ -305,7 +445,7 @@
           <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
-        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
             <name>saveConfig</name>
